@@ -4,11 +4,11 @@
 
 ## Game Controls
 
-Arrow Keys - Move
-Q - Basic Attacks
-Hold Q - Charge Attack
-E - Special Attack
-Tab - Change Class
+Arrow Keys - Move \
+Q - Basic Attacks \
+Hold Q - Charge Attack \
+E - Special Attack *Not Yet Implemented) \ 
+Tab - Change Class 
 
 ## Game Ideas
 
@@ -21,4 +21,5 @@ Tab - Change Class
 **General**
 - add background and tilemap
 - swag it out bro
+- weird stuff with movement attack combos
 
