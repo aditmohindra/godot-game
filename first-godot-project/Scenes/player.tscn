@@ -424,8 +424,6 @@ position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_yiyyj")
 animation = &"basic_attack_3"
 autoplay = "idle"
-frame = 14
-frame_progress = 1.0
 
 [node name="AttackResetTimer" type="Timer" parent="."]
 

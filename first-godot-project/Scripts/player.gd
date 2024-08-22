@@ -166,3 +166,4 @@ func should_slow_down_attack() -> bool:
 	if animated_sprite.frame >= total_frames - ATTACK_SLOWDOWN_FRAME_THRESHOLD:
 		return true
 	return false
+	
