@@ -47,6 +47,11 @@ func _physics_process(delta: float) -> void:
 			attack_queued = true
 		return
 
+	# Handle special attack (triggers basic_attack_3)
+	if Input.is_action_just_pressed("special_attack") and not is_attacking:
+		play_special_attack()
+		return
+
 	# Handle attack hold (continued hold)
 	if Input.is_action_pressed("basic_attack"):
 		return  # Continue playing basic_attack_4 if held
@@ -135,6 +140,16 @@ func play_next_attack():
 	attack_reset_timer.start(ATTACK_RESET_TIME)
 	print("Attack started!")  # Debug print
 
+# Function to play the special attack (basic_attack_3)
+func play_special_attack():
+	animated_sprite.play("basic_attack_3")
+	is_attacking = true
+	attack_queued = false  # Reset the attack queue flag
+	
+	# Restart the timer to track time between attacks
+	attack_reset_timer.start(ATTACK_RESET_TIME)
+	print("Special attack started!")  # Debug print
+
 # This function will be triggered when an animation finishes
 func _on_AnimatedSprite2D_animation_finished():
 	print("Animation finished: ", animated_sprite.animation)  # Debug print
@@ -144,7 +159,7 @@ func _on_AnimatedSprite2D_animation_finished():
 		must_finish_attack_4 = false  # Reset the force completion flag
 		animated_sprite.play("idle")  # Go back to idle animation after basic_attack_4
 		print("Holding attack finished!")  # Debug print
-	elif animated_sprite.animation in ["basic_attack", "basic_attack_2"]:
+	elif animated_sprite.animation in ["basic_attack", "basic_attack_2", "basic_attack_3"]:
 		is_attacking = false
 		# If an attack is queued, immediately chain the next attack
 		if attack_queued:
@@ -166,4 +181,3 @@ func should_slow_down_attack() -> bool:
 	if animated_sprite.frame >= total_frames - ATTACK_SLOWDOWN_FRAME_THRESHOLD:
 		return true
 	return false
-	
